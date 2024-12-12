@@ -1,6 +1,6 @@
 from tkinter import *
-from datetime import datetime, timedelta
 import os
+from dateconv import *
 light_gray = "#f1f0ed"
 lilblue = "#f3f5f6"
 lighter_gray = "#e9ebec"
@@ -14,22 +14,6 @@ for i in range (n):
     old = database.readline().strip().split()
     data[int(old[1])] = int(old[0])
 database.close()
-
-def convert(date_string):
-    try:
-        date_format = "%d/%m/%Y"
-        given_date = datetime.strptime(date_string, date_format)
-        start_date = datetime(2000, 1, 1)
-        return (given_date - start_date).days
-    except ValueError:
-        return -1
-
-
-
-def convert_back(days):
-    start_date = datetime(2000, 1, 1)
-    target_date = start_date + timedelta(days=days)
-    return target_date.strftime("%d/%m/%Y")
 
 win = Tk()
 win.geometry("2000x2000")
@@ -201,8 +185,8 @@ scrollbar = Scrollbar(win,
                       width=30) 
 listbox.config(yscrollcommand = scrollbar.set) 
 scrollbar.config(command = listbox.yview) 
-## this is ugly styling but i will fix it later
 
+## this is ugly styling but i will fix it later
 title.pack(pady = 40)
 code.pack(pady = 5)
 code_entry.pack(pady=5)
