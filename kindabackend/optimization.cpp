@@ -65,7 +65,7 @@ int32_t main(){
             }
             else{
                 fileout << min_delay[n_orders][j] << ' ';
-                for (auto x:orders){
+                for (auto x : orders){
                     fileout << x.second << ' ';
                     fileout << x.first << ' ' << *days[n_orders][j].lower_bound(x.first) << "    ";
                 }
