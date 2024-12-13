@@ -3,6 +3,9 @@
 #define MAX_DAILY_ORDERS 30 
 using namespace std;
 
+int cost_function(int delta){
+    return delta*delta;
+}
 
 int32_t main(){
 
@@ -13,7 +16,7 @@ int32_t main(){
     ofstream fileout("./kindabackend/res.txt");
 
 
-    // take the input as a vector of pairs
+    // take the input as a vector of pairs)
     int n_orders;
     filein >> n_orders;
     vector <pair <int, int>> orders(n_orders);
@@ -52,7 +55,7 @@ int32_t main(){
                     days[element][n_days] = days[previous_element][n_days-1];
 
                 }
-                partial_delay += orders[element-1].first - orders[previous_element-1].first;
+                partial_delay += cost_function(orders[element-1].first - orders[previous_element-1].first);
             }
             days[element][n_days].insert(orders[element-1].first);
         }
